@@ -21,14 +21,21 @@ public class FileLanguageFilter implements LanguageFilter{
   public void filterLanguage(String language) throws Exception {
     // check if each line in the input file is of the language
     // indicated and append those in that langauge to output file
-    FileReader fr = new FileReader(this.inputFile.toString());
-    BufferedReader br = new BufferedReader(fr);
+
+    // pre initialized for the finally clause
+    BufferedReader br = null;
     BufferedWriter bw = null;
+
     try {
+      // reader
+      FileReader fr = new FileReader(this.inputFile.toString());
+      br = new BufferedReader(fr);
+      // writer
+      FileWriter wr = new FileWriter(this.outputFile.toString());
+      bw = new BufferedWriter(wr);
+
       String line = br.readLine();
       while (line!=null) {
-        FileWriter wr = new FileWriter(this.outputFile.toString());
-        bw = new BufferedWriter(wr);
         // call simplified tweet method to convert into type
         Optional<SimplifiedTweet> st = SimplifiedTweet.fromJson(line); //
         if (st.isPresent() && st.get().getLanguage().equals(language)) { // maybe we need a method to get the language
@@ -38,8 +45,14 @@ public class FileLanguageFilter implements LanguageFilter{
         System.out.println("hola");
       }
     } finally {
-      bw.close();// close resources
-      br.close();
+      // close resources
+      if (bw != null){
+        bw.close();
+      }
+
+      if (br != null) {
+        br.close();
+      }
     }
   }
 }
