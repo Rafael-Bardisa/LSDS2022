@@ -9,15 +9,21 @@ import org.junit.Test;
  */
 public class TwitterFilterTest
 {
+
+
     /**
      * Rigorous Test :-)
      */
     @Test
     public void shouldAnswerWithTrue()
     {
-        System.out.println("\33[94mANSI escape codes\33[0m");
+        System.out.println("ANSI escape codes");
         assertTrue( true );
     }
-
+    @Test
+    public void test(){
+        System.out.println("\33[94mANSI escape codes\33[0m");
+        assertTrue(false);
+    }
     // Place your code here
 }
