@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public class FileLanguageFilter implements LanguageFilter{
 
-  private String inputFile;
-  private String outputFile;
+  private final String inputFile;
+  private final String outputFile;
 
   public FileLanguageFilter(String inputfile, String outputfile){    //constructor
 

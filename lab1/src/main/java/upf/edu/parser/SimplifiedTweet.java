@@ -5,12 +5,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.io.Serializable;
 import java.util.Optional;
 
 public class SimplifiedTweet{
 
-  private static JsonParser parser = new JsonParser();
+  private static final JsonParser parser = new JsonParser();
 
   private final long tweetId;			  // the id of the tweet ('id')
   private final String text;  		      // the content of the tweet ('text')
@@ -34,7 +33,7 @@ public class SimplifiedTweet{
    * Returns a {@link SimplifiedTweet} from a JSON String.
    * If parsing fails, for any reason, return an {@link Optional#empty()}
    *
-   * @param jsonStr
+   * @param jsonStr a json string
    * @return an {@link Optional} of a {@link SimplifiedTweet}
    */
   public static Optional<SimplifiedTweet> fromJson(String jsonStr) {
@@ -80,37 +79,9 @@ public class SimplifiedTweet{
 // The following line produces valid JSON as output
     return new Gson().toJson(this);
   }
-  public static JsonParser getParser() {
-    return parser;
-  }
-
-  public long getTimestampMs() {
-    return timestampMs;
-  }
-
-  public long getTweetId() {
-    return tweetId;
-  }
-
-  public long getUserId() {
-    return userId;
-
-  }
-
-  public String getText() {
-    return text;
-  }
-
-  public String getUserName() {
-    return userName;
-  }
 
   public String getLanguage() {
     return language;
-  }
-
-  public static void setParser(JsonParser parser) {
-    SimplifiedTweet.parser = parser;
   }
 
 }

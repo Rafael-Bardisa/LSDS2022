@@ -6,6 +6,7 @@ import upf.edu.uploader.S3Uploader;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class TwitterFilter {
@@ -32,12 +33,12 @@ public class TwitterFilter {
                 filter.filterLanguage(language);
             }catch (IOException exception){
                 System.out.println("\33[91m el programa petó\33[0m");
-                continue;   //TODO esto no se queda asi
+                //TODO esto no se queda asi
             }
         }
 
         final S3Uploader uploader = new S3Uploader(bucket, language, "upf");
-        uploader.upload(Arrays.asList(outputFile));
+        uploader.upload(Collections.singletonList(outputFile));
 
     }
 
