@@ -48,35 +48,37 @@ public class SimplifiedTweet{
 
 
 
-      JsonElement je = JsonParser.parseString(jsonStr);
-      JsonObject jo = je.getAsJsonObject();
-      SimplifiedTweet tweet  = null;
+    JsonElement je = JsonParser.parseString(jsonStr);
+    JsonObject jo = je.getAsJsonObject();
+    SimplifiedTweet tweet  = null;
 
-      if (jo.has("lang") && jo.has("text") && jo.has("timestampMs") && jo.has("tweetId")){
-        tweetId = jo.get("tweetId").getAsLong();
-        text = jo.get("text").getAsString();
-        language = jo.get("lang").getAsString();
-        timestampMs = jo.get("timestamp_ms").getAsLong();
+    if (jo.has("lang") && jo.has("text") && jo.has("timestamps_ms") && jo.has("id")){
+      tweetId = jo.get("id").getAsLong();
+      text = jo.get("text").getAsString();
+      language = jo.get("lang").getAsString();
+      timestampMs = jo.get("timestamp_ms").getAsLong();
 
-        if(jo.has("user")){
-          JsonObject userObj = jo.getAsJsonObject("user");
-          if (userObj.has("userName") && userObj.has("userId")){
-            userName = userObj.get("userName").getAsString();
-            userId = userObj.get("userId").getAsLong();
-            tweet = new SimplifiedTweet(tweetId, text, userId, userName, language, timestampMs);
-          }
+      if(jo.has("user")){
+        JsonObject userObj = jo.getAsJsonObject("user");
+        if (userObj.has("name") && userObj.has("user_id")){
+          userName = userObj.get("name").getAsString();
+          userId = userObj.get("user_id").getAsLong();
+          tweet = new SimplifiedTweet(tweetId, text, userId, userName, language, timestampMs);
         }
       }
-      return Optional.ofNullable(tweet);
+    }
+    return Optional.ofNullable(tweet);
 
 
   }
+
 
   @Override
-  public String toString(){
+  public String toString() {
+// Overriding how SimplifiedTweets are printed in console or the output file
+// The following line produces valid JSON as output
     return new Gson().toJson(this);
   }
-
   public static JsonParser getParser() {
     return parser;
   }
@@ -91,6 +93,7 @@ public class SimplifiedTweet{
 
   public long getUserId() {
     return userId;
+
   }
 
   public String getText() {
@@ -109,4 +112,4 @@ public class SimplifiedTweet{
     SimplifiedTweet.parser = parser;
   }
 
-  }
+}
