@@ -1,7 +1,7 @@
 package upf.edu;
 import java.io.File;
 import java.util.Arrays;
-import java.util.List;
+
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -36,7 +36,7 @@ public class TwitterFilterTest
         File directory = new File("./");
         System.out.println(directory.getAbsolutePath());
         S3Uploader client = new S3Uploader("lsds2022s3bucket", "", "upf");
-        String[] file = new String[]{"src/test/resources/testfile"};
+        String[] file = new String[]{"testfile"};
         client.upload(Arrays.asList(file));
     }
     // Place your code here

@@ -45,13 +45,14 @@ public class SimplifiedTweet{
     String language;
     long timestampMs;
 
+    SimplifiedTweet tweet  = null;
 
 
     JsonElement je = JsonParser.parseString(jsonStr);
+    if (je.isJsonNull()){return Optional.empty();}
     JsonObject jo = je.getAsJsonObject();
-    SimplifiedTweet tweet  = null;
 
-    if (jo.has("lang") && jo.has("text") && jo.has("timestamps_ms") && jo.has("id")){
+    if (jo.has("lang") && jo.has("text") && jo.has("timestamp_ms") && jo.has("id")){
       tweetId = jo.get("id").getAsLong();
       text = jo.get("text").getAsString();
       language = jo.get("lang").getAsString();
@@ -59,9 +60,10 @@ public class SimplifiedTweet{
 
       if(jo.has("user")){
         JsonObject userObj = jo.getAsJsonObject("user");
-        if (userObj.has("name") && userObj.has("user_id")){
+
+        if (userObj.has("name") && userObj.has("id")){
           userName = userObj.get("name").getAsString();
-          userId = userObj.get("user_id").getAsLong();
+          userId = userObj.get("id").getAsLong();
           tweet = new SimplifiedTweet(tweetId, text, userId, userName, language, timestampMs);
         }
       }

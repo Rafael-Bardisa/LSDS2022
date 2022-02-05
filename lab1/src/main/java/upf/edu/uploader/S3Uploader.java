@@ -41,7 +41,7 @@ public class S3Uploader implements Uploader {
                 String filename = fileRef.getName();
                 try {
                     System.out.println(fileRef.getName());
-                    Client.putObject(new PutObjectRequest(this.BucketName, filename, fileRef));
+                    Client.putObject(new PutObjectRequest(this.BucketName, dest_path, fileRef));
                 } catch (AmazonServiceException e){
                     System.err.println(e.getErrorMessage());
                     System.exit(1);
