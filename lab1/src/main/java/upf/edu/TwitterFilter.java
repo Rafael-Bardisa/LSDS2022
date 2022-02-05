@@ -15,10 +15,15 @@ public class TwitterFilter {
     }
 
     public static void main( String[] args ) throws IOException {
+
         List<String> argsList = Arrays.asList(args);
         String language = argsList.get(0);
         String outputFile = argsList.get(1);
         String bucket = argsList.get(2);
+
+        // preemptively deletes all content of the output file
+        new FileWriter(outputFile);
+
         System.out.println("Language: " + blue(language) + ".\nOutput file: " + blue(outputFile) + ".\nDestination bucket: " + blue(bucket) + "\n");
         for(String inputFile: argsList.subList(3, argsList.size())) {
             System.out.println("Processing: \33[94m" + inputFile + "\33[0m");
@@ -31,8 +36,8 @@ public class TwitterFilter {
             }
         }
 
-        //final S3Uploader uploader = new S3Uploader(bucket, "prefix", "default");
-        //uploader.upload(Arrays.asList(outputFile));
+        final S3Uploader uploader = new S3Uploader(bucket, language, "upf");
+        uploader.upload(Arrays.asList(outputFile));
 
     }
 

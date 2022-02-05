@@ -36,12 +36,11 @@ public class S3Uploader implements Uploader {
             System.out.println("This bucket doesn't exist");
         } else {
             for (String file : files) {
-                String dest_path = "s3://"+this.BucketName+"/"+this.Prefix/*+ "/"+file*/;
+                //String dest_path = "s3://"+this.BucketName+"/"+this.Prefix/*+ "/"+file*/;
                 File fileRef = new File(file);
-                String filename = fileRef.getName();
                 try {
                     System.out.println(fileRef.getName());
-                    Client.putObject(new PutObjectRequest(this.BucketName, dest_path, fileRef));
+                    Client.putObject(new PutObjectRequest(this.BucketName, this.Prefix + "/" + file, fileRef));
                 } catch (AmazonServiceException e){
                     System.err.println(e.getErrorMessage());
                     System.exit(1);
