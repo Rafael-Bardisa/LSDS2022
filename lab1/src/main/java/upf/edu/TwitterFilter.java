@@ -4,7 +4,7 @@ import upf.edu.filter.FileLanguageFilter;
 import upf.edu.filter.FilterException;
 import upf.edu.uploader.S3Uploader;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,6 +15,15 @@ public class TwitterFilter {
     }
 
     public static void main( String[] args ) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader("my second big test"));
+        File fileador = new File("my second big test");
+        /*
+        BufferedWriter bw = new BufferedWriter(new FileWriter(fileador));
+        bw.write("hola caracola");
+        bw.close();
+        System.out.println(br.readLine());
+        br.close();*/
+
         List<String> argsList = Arrays.asList(args);
         String language = argsList.get(0);
         String outputFile = argsList.get(1);
@@ -33,6 +42,7 @@ public class TwitterFilter {
 
         //final S3Uploader uploader = new S3Uploader(bucket, "prefix", "default");
         //uploader.upload(Arrays.asList(outputFile));
+
     }
 
 

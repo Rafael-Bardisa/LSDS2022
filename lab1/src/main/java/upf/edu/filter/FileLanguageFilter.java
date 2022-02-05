@@ -11,6 +11,12 @@ public class FileLanguageFilter implements LanguageFilter{
   private String outputFile;
 
   public FileLanguageFilter(String inputfile, String outputfile){    //constructor
+
+    /* TODO estos strings representa que estaran en el mismo directorio que el jar
+         eg usando ../target/fat.jar, new FileReader(inputfile) leera de ../target/inputfile
+         y new FileWriter(outputfile) escribe ../target/outputfile, asi que los strings deben
+         incluir sus extensiones
+     */
     this.inputFile = inputfile;
     this.outputFile = outputfile;
   }

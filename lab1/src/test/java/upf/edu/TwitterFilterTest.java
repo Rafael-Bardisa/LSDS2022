@@ -23,11 +23,13 @@ public class TwitterFilterTest
         System.out.println("ANSI escape codes");
         assertTrue( true );
     }
+    /*
     @Test
     public void test(){
         System.out.println("\33[94mANSI escape codes\33[0m\ns3://");
         assertTrue(false);
     }
+    */
 
     @Test
     public void uploadTest(){
