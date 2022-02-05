@@ -2,10 +2,7 @@ package upf.edu.filter;
 
 import upf.edu.parser.SimplifiedTweet;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.Optional;
 
 public class FileLanguageFilter implements LanguageFilter{
@@ -18,7 +15,7 @@ public class FileLanguageFilter implements LanguageFilter{
     this.outputFile = outputfile;
   }
 
-  public void filterLanguage(String language) throws Exception {
+  public void filterLanguage(String language) throws IOException {
     // check if each line in the input file is of the language
     // indicated and append those in that langauge to output file
 

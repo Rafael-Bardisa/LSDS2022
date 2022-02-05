@@ -15,7 +15,7 @@ public class S3Uploader implements Uploader {
     private String Prefix;
     private AmazonS3 Client;
 
-    public void S3Uploader(String bn, String pre, String cre){
+    public S3Uploader(String bn, String pre, String cre){
         this.BucketName = bn;
         this.Prefix = pre;
         this.Client = AmazonS3ClientBuilder.standard()

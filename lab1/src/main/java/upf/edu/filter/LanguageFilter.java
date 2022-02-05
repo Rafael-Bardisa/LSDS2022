@@ -1,5 +1,7 @@
 package upf.edu.filter;
 
+import java.io.IOException;
+
 public interface LanguageFilter {
 
   /**
@@ -8,5 +10,5 @@ public interface LanguageFilter {
    * @return
    */
 
-  void filterLanguage(String language) throws Exception;
+  void filterLanguage(String language) throws IOException;
 }

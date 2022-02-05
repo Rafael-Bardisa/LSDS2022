@@ -18,7 +18,12 @@ public class TwitterFilter {
         for(String inputFile: argsList.subList(3, argsList.size())) {
             System.out.println("Processing: " + inputFile);
             final FileLanguageFilter filter = new FileLanguageFilter(inputFile, outputFile);
-            //filter.filterLanguage(language);
+            try {
+                filter.filterLanguage(language);
+            }catch (IOException exception){
+                System.out.println("\33[91m el programa petó\33[0m");
+                continue;   //TODO esto no se queda asi
+            }
         }
 
         //final S3Uploader uploader = new S3Uploader(bucket, "prefix", "default");
