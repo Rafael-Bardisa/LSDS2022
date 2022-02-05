@@ -13,7 +13,7 @@ public class FileLanguageFilter implements LanguageFilter{
   private String inputFile;
   private String outputFile;
 
-  public void fileLanguageFilter(String inputfile, String outputfile){    //constructor
+  public FileLanguageFilter(String inputfile, String outputfile){    //constructor
     this.inputFile = inputfile;
     this.outputFile = outputfile;
   }
