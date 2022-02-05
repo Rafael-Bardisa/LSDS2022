@@ -5,8 +5,10 @@ import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
+import java.io.InputStream;
 import java.util.List;
 import java.io.File;
 
@@ -34,9 +36,12 @@ public class S3Uploader implements Uploader {
             System.out.println("This bucket doesn't exist");
         } else {
             for (String file : files) {
-                String dest_path = "s3://"+this.BucketName+"/"+this.Prefix+"/"+file;
+                String dest_path = "s3://"+this.BucketName+"/"+this.Prefix/*+ "/"+file*/;
+                File fileRef = new File(file);
+                String filename = fileRef.getName();
                 try {
-                    Client.putObject(this.BucketName, file, new File(dest_path));
+                    System.out.println(fileRef.getName());
+                    Client.putObject(new PutObjectRequest(this.BucketName, filename, fileRef));
                 } catch (AmazonServiceException e){
                     System.err.println(e.getErrorMessage());
                     System.exit(1);
