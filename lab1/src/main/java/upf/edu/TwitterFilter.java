@@ -15,20 +15,11 @@ public class TwitterFilter {
     }
 
     public static void main( String[] args ) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("my second big test"));
-        File fileador = new File("my second big test");
-        /*
-        BufferedWriter bw = new BufferedWriter(new FileWriter(fileador));
-        bw.write("hola caracola");
-        bw.close();
-        System.out.println(br.readLine());
-        br.close();*/
-
         List<String> argsList = Arrays.asList(args);
         String language = argsList.get(0);
         String outputFile = argsList.get(1);
         String bucket = argsList.get(2);
-        System.out.println("Language: " + blue(language) + ". Output file: " + blue(outputFile) + ". Destination bucket: " + blue(bucket));
+        System.out.println("Language: " + blue(language) + ".\nOutput file: " + blue(outputFile) + ".\nDestination bucket: " + blue(bucket) + "\n");
         for(String inputFile: argsList.subList(3, argsList.size())) {
             System.out.println("Processing: \33[94m" + inputFile + "\33[0m");
             final FileLanguageFilter filter = new FileLanguageFilter(inputFile, outputFile);
