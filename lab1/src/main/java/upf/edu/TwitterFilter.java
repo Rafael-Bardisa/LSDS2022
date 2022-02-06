@@ -31,7 +31,7 @@ public class TwitterFilter {
         System.out.println("Language: " + blue(language) + ".\nOutput file: " + blue(outputFile) + ".\nDestination bucket: " + blue(bucket) + "\n");
         Instant beforeExecution = Instant.now();
         for(String inputFile: argsList.subList(3, argsList.size())) {
-            System.out.println("Processing: \33[94m" + inputFile + "\33[0m");
+            System.out.println("Processing: " + blue(inputFile));
             final FileLanguageFilter filter = new FileLanguageFilter(inputFile, outputFile);
             try {
                 filter.filterLanguage(language);
@@ -44,7 +44,7 @@ public class TwitterFilter {
         final S3Uploader uploader = new S3Uploader(bucket, language, "upf");
         uploader.upload(Collections.singletonList(outputFile));
 
-        System.out.println("Time needed to filter " + language + " files: \33[94m" + Duration.between(beforeExecution, Instant.now()) + "\33[0m seconds");
+        System.out.println("Time needed to filter " + language + " files: " + blue(Duration.between(beforeExecution, Instant.now()).toString()) + " seconds");
 
     }
 
