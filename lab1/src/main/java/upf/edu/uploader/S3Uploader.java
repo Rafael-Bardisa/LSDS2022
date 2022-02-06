@@ -7,6 +7,7 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class S3Uploader implements Uploader {

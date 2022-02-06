@@ -36,15 +36,15 @@ public class TwitterFilter {
             try {
                 filter.filterLanguage(language);
             }catch (IOException exception){
-                System.out.println("\33[91m el programa petó\33[0m");
-                //TODO esto no se queda asi
+                System.out.println("\33[91mException found parsing " + inputFile + "!\33[0m");
             }
         }
 
         final S3Uploader uploader = new S3Uploader(bucket, language, "upf");
+        System.out.println("Processing complete. Uploading to " + blue("s3://" + bucket + "/" + language + "/" + outputFile));
         uploader.upload(Collections.singletonList(outputFile));
 
-        System.out.println("Time needed to filter " + language + " files: " + blue(Duration.between(beforeExecution, Instant.now()).toString()) + " seconds");
+        System.out.println("Time needed to filter " + language + " files: " + blue(Long.toString(Duration.between(beforeExecution, Instant.now()).getSeconds())) + " seconds");
 
     }
 
