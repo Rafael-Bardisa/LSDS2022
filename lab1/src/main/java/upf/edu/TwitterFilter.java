@@ -5,6 +5,8 @@ import upf.edu.filter.FilterException;
 import upf.edu.uploader.S3Uploader;
 
 import java.io.*;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -17,6 +19,7 @@ public class TwitterFilter {
 
     public static void main( String[] args ) throws IOException {
 
+
         List<String> argsList = Arrays.asList(args);
         String language = argsList.get(0);
         String outputFile = argsList.get(1);
@@ -26,6 +29,7 @@ public class TwitterFilter {
         new FileWriter(outputFile);
 
         System.out.println("Language: " + blue(language) + ".\nOutput file: " + blue(outputFile) + ".\nDestination bucket: " + blue(bucket) + "\n");
+        Instant beforeExecution = Instant.now();
         for(String inputFile: argsList.subList(3, argsList.size())) {
             System.out.println("Processing: \33[94m" + inputFile + "\33[0m");
             final FileLanguageFilter filter = new FileLanguageFilter(inputFile, outputFile);
@@ -39,6 +43,8 @@ public class TwitterFilter {
 
         final S3Uploader uploader = new S3Uploader(bucket, language, "upf");
         uploader.upload(Collections.singletonList(outputFile));
+
+        System.out.println("Time needed to filter " + language + " files: \33[94m" + Duration.between(beforeExecution, Instant.now()) + "\33[0m seconds");
 
     }
 

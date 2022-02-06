@@ -33,6 +33,8 @@ public class S3Uploader implements Uploader {
         } else {
             for (String file : files) {
                 //String dest_path = "s3://"+this.BucketName+"/"+this.Prefix/*+ "/"+file*/;
+
+                // file is in the same directory as the jar file
                 File fileRef = new File(file);
                 try {
                     Client.putObject(new PutObjectRequest(this.BucketName, this.Prefix + "/" + file, fileRef));
