@@ -19,7 +19,6 @@ public class TwitterFilter {
 
     public static void main( String[] args ) throws IOException {
 
-
         List<String> argsList = Arrays.asList(args);
         String language = argsList.get(0);
         String outputFile = argsList.get(1);

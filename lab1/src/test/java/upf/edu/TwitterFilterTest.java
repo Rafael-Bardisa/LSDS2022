@@ -13,6 +13,7 @@ import org.junit.Test;
  */
 public class TwitterFilterTest
 {
+    private static final String testDirectory  = "src/test/resources/";
     /**
      * Rigorous Test :-)
      */
@@ -23,12 +24,12 @@ public class TwitterFilterTest
         assertTrue( true );
     }
     // Place your code here
-/*
+
     @Test
     public void resourcePathTest() throws IOException
     {
-        // tests access and read files from the Lab1 folder by default
-        File test = new File("../testfile");
-        System.out.println(test.exists() + ", " + test.getCanonicalPath());
-    }*/
+        // tests access and read files from the Lab1 folder by default. Test access given static directory string
+        File test = new File(testDirectory + "testfile");
+        assertTrue(test.exists());
+    }
 }
