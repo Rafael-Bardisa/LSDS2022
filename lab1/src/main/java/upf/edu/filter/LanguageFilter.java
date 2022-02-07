@@ -10,5 +10,5 @@ public interface LanguageFilter {
    * @return
    */
 
-  void filterLanguage(String language) throws IOException;
+  int filterLanguage(String language) throws IOException;
 }

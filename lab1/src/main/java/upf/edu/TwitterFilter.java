@@ -23,7 +23,7 @@ public class TwitterFilter {
         String language = argsList.get(0);
         String outputFile = argsList.get(1);
         String bucket = argsList.get(2);
-
+        int nTweets = 0;
         // preemptively deletes all content of the output file
         new FileWriter(outputFile);
 
@@ -33,7 +33,7 @@ public class TwitterFilter {
             System.out.println("Processing: " + blue(inputFile));
             final FileLanguageFilter filter = new FileLanguageFilter(inputFile, outputFile);
             try {
-                filter.filterLanguage(language);
+                nTweets += filter.filterLanguage(language);
             }catch (IOException exception){
                 System.out.println("\33[91mException found parsing " + inputFile + "!\33[0m");
             }
@@ -43,7 +43,8 @@ public class TwitterFilter {
         System.out.println("Processing complete. Uploading to " + blue("s3://" + bucket + "/" + language + "/" + outputFile));
         uploader.upload(Collections.singletonList(outputFile));
 
-        System.out.println("Time needed to filter " + language + " files: " + blue(Long.toString(Duration.between(beforeExecution, Instant.now()).getSeconds())) + " seconds");
+        System.out.println("Found " + blue(String.valueOf(nTweets)) + " tweets written in " + blue(language));
+        System.out.println("Time needed to filter " + blue(language) + " files: " + blue(Long.toString(Duration.between(beforeExecution, Instant.now()).getSeconds())) + " seconds.");
 
     }
 
