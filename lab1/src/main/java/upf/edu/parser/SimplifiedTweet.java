@@ -1,9 +1,6 @@
 package upf.edu.parser;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 
 import java.util.Optional;
 
@@ -45,9 +42,14 @@ public class SimplifiedTweet{
     long timestampMs;
 
     SimplifiedTweet tweet  = null;
+    JsonElement je = null;
 
-
-    JsonElement je = JsonParser.parseString(jsonStr);
+    try{
+    je = JsonParser.parseString(jsonStr);
+    }
+    catch (JsonSyntaxException badJson){
+      return Optional.empty();
+    }
     if (je.isJsonNull()){return Optional.empty();}
     JsonObject jo = je.getAsJsonObject();
 
