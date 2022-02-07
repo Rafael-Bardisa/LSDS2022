@@ -25,7 +25,7 @@ public class TwitterFilterTest
     @Test
     public void shouldAnswerWithTrue()
     {
-        System.out.println("ANSI escape codes");
+        System.out.println("\33[94mANSI escape codes\33[0m");
         assertTrue( true );
     }
 
