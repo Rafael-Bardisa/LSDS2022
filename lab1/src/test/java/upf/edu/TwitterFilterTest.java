@@ -1,14 +1,15 @@
 package upf.edu;
+
+import org.junit.Test;
+import upf.edu.filter.FileLanguageFilter;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Random;
 
-import upf.edu.filter.FileLanguageFilter;
-import upf.edu.uploader.S3Uploader;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
 
 
 
@@ -33,13 +34,10 @@ public class TwitterFilterTest
          * Test access given static directory string
          * */
     @Test
-    public void resourcePathTest() throws IOException
-    {
+    public void resourcePathTest() {
         // tests access and read files from the Lab1 folder by default. Test access given static directory string
         File test = new File(testDirectory + "testfile");
         assertTrue(test.exists());
-
-
     }
 
 
@@ -55,7 +53,7 @@ public class TwitterFilterTest
         // tries to read a bad json. Should not write anything to the output file
         FileLanguageFilter jsonFilter = new FileLanguageFilter(testDirectory + "false.json", testDirectory + "out.txt");
         jsonFilter.filterLanguage("es");
-        assertTrue(new File(testDirectory + "out.txt").length() == 0);
+        assertEquals(0, new File(testDirectory + "out.txt").length());
     }
 
 
@@ -71,7 +69,7 @@ public class TwitterFilterTest
         //
         FileLanguageFilter jsonFilter = new FileLanguageFilter(testDirectory + "test.json", testDirectory + "out.txt");
         jsonFilter.filterLanguage("en");
-        assertTrue(new File(testDirectory + "out.txt").length() == 229);
+        assertEquals(229, new File(testDirectory + "out.txt").length());
     }
 
 
@@ -87,7 +85,7 @@ public class TwitterFilterTest
         // tries to read a json tweet with the incorrect language. Should not write anything to the output file
         FileLanguageFilter jsonFilter = new FileLanguageFilter(testDirectory + "test.json", testDirectory + "out.txt");
         jsonFilter.filterLanguage("es");
-        assertTrue(new File(testDirectory + "out.txt").length() == 0);
+        assertEquals(0, new File(testDirectory + "out.txt").length());
     }
 
 
@@ -103,7 +101,7 @@ public class TwitterFilterTest
         //
         FileLanguageFilter jsonFilter = new FileLanguageFilter(testDirectory + "incomplete.json", testDirectory + "out.txt");
         jsonFilter.filterLanguage("en");
-        assertTrue(new File(testDirectory + "out.txt").length() == 0);
+        assertEquals(0, new File(testDirectory + "out.txt").length());
     }
 
 
@@ -118,11 +116,11 @@ public class TwitterFilterTest
         new FileWriter(testDirectory + "out.txt");
 
         Random rng = new Random();
-        int repetitions = rng.nextInt()%10;
+        int repetitions = rng.nextInt(10);
         for (int i = 0; i < repetitions; i++){
             FileLanguageFilter jsonFilter = new FileLanguageFilter(testDirectory + "test.json", testDirectory + "out.txt");
             jsonFilter.filterLanguage("en");
         }
-        assertTrue(new File(testDirectory + "out.txt").length() == 229L * repetitions);
+        assertEquals(new File(testDirectory + "out.txt").length(), 229L * repetitions);
     }
 }
