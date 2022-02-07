@@ -57,8 +57,9 @@ public class TwitterFilterTest
 
         // tries to read a bad json. Should not write anything to the output file
         FileLanguageFilter jsonFilter = new FileLanguageFilter(testDirectory + "false.json", testDirectory + "out.txt");
-        jsonFilter.filterLanguage("es");
+        int nTweets = jsonFilter.filterLanguage("es");
         assertEquals(0, new File(testDirectory + "out.txt").length());
+        assertEquals(0, nTweets);
     }
 
 
@@ -73,8 +74,9 @@ public class TwitterFilterTest
 
         //
         FileLanguageFilter jsonFilter = new FileLanguageFilter(testDirectory + "test.json", testDirectory + "out.txt");
-        jsonFilter.filterLanguage("en");
+        int nTweets = jsonFilter.filterLanguage("en");
         assertEquals(229, new File(testDirectory + "out.txt").length());
+        assertEquals(1, nTweets);
     }
 
 
@@ -89,8 +91,9 @@ public class TwitterFilterTest
 
         // tries to read a json tweet with the incorrect language. Should not write anything to the output file
         FileLanguageFilter jsonFilter = new FileLanguageFilter(testDirectory + "test.json", testDirectory + "out.txt");
-        jsonFilter.filterLanguage("es");
+        int nTweets = jsonFilter.filterLanguage("es");
         assertEquals(0, new File(testDirectory + "out.txt").length());
+        assertEquals(0, nTweets);
     }
 
 
@@ -105,8 +108,9 @@ public class TwitterFilterTest
 
         //
         FileLanguageFilter jsonFilter = new FileLanguageFilter(testDirectory + "incomplete.json", testDirectory + "out.txt");
-        jsonFilter.filterLanguage("en");
+        int nTweets = jsonFilter.filterLanguage("en");
         assertEquals(0, new File(testDirectory + "out.txt").length());
+        assertEquals(0, nTweets);
     }
 
 
@@ -121,12 +125,14 @@ public class TwitterFilterTest
         new FileWriter(testDirectory + "out.txt");
 
         Random rng = new Random();
+        int nTweets = 0;
         int repetitions = rng.nextInt(10);
         for (int i = 0; i < repetitions; i++){
             FileLanguageFilter jsonFilter = new FileLanguageFilter(testDirectory + "test.json", testDirectory + "out.txt");
-            jsonFilter.filterLanguage("en");
+            nTweets += jsonFilter.filterLanguage("en");
         }
         assertEquals(new File(testDirectory + "out.txt").length(), 229L * repetitions);
+        assertEquals(repetitions, nTweets);
     }
 
 
