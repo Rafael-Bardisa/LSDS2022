@@ -1,11 +1,16 @@
 package upf.edu;
 
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import org.junit.Test;
 import upf.edu.filter.FileLanguageFilter;
+import upf.edu.uploader.S3Uploader;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -122,5 +127,25 @@ public class TwitterFilterTest
             jsonFilter.filterLanguage("en");
         }
         assertEquals(new File(testDirectory + "out.txt").length(), 229L * repetitions);
+    }
+
+
+    /**Uploads a test file to the bucket given the existing upf credentials
+     * */
+    @Test
+    public void awsCredentials()
+    {
+        S3Uploader uploader = new S3Uploader("lsds2022s3bucket", "junit-tests", "upf");
+        uploader.upload(Collections.singletonList(testDirectory + "testfile"));
+    }
+
+
+    /**Uploads a test file to a non existing bucket given the existing upf credentials. Should not crash
+     * */
+    @Test
+    public void awsCredentialsNoBucket()
+    {
+        S3Uploader uploader = new S3Uploader("lisdbfljkabkawjlbfkhbfa", "junit-tests", "upf");
+        uploader.upload(Collections.singletonList(testDirectory + "testfile"));
     }
 }
