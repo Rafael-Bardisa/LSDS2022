@@ -1,6 +1,6 @@
 # LSDS2021
 ## Large Scale Distributed Systems 2022
-We could not find either of Eurivision 1 and 2 files in the upf bucket
+We could not find either of Eurivision 1 and 2 files in the upf bucket, our data will be based on the remaining 8 files.
 ##Benchmarking
 In order to get the elapsed time of the program, 
 we have used the Duration and Instant classes from java.time
@@ -13,11 +13,11 @@ IntelliJ in order to provide the program with CLI arguments
 
 ###From Intellij Custom config
 ####Using 2017 macbook air, 1.8 GHz processor, 8 Gb RAM:
-Spanish: 213 seconds. Local file weighs 122.1 Mb, file in S3 weighs 116.4 Mb.
+Spanish: 213 seconds. Local file weighs 122.1 Mb, file in S3 weighs 116.4 Mb. 509435 tweets found.
 <br/>
-Hungarian: 119 seconds. Local file weighs 221 Kb, file in S3 weighs 216.1 Kb.
+Hungarian: 119 seconds. Local file weighs 221 Kb, file in S3 weighs 216.1 Kb. 1057 tweets found.
 <br/>
-Portuguese: 144 seconds. Local file weighs 8.6 Mb, file in S3 weighs 8.2 Mb.
+Portuguese: 144 seconds. Local file weighs 8.6 Mb, file in S3 weighs 8.2 Mb. 37623 tweets found.
 <br/><br/>
 File sizes have been tested to be consistent both locally and in S3, which
 hints that local files include metadata while S3 does not.
@@ -28,9 +28,9 @@ raises the following warning, but correctly uploads to the bucket:<br/><br/>*de 
 WARNING: JAXB is unavailable. Will fallback to SDK implementation which may be less performant.If you are using Java 9+, you will need to include javax.xml.bind:jaxb-api as a dependency.*<br/><br/>
 **Java version is: openjdk 17.0.1 2021-10-19**<br/>
 
-Spanish: 209 seconds. Local file weighs 122.1 Mb, file in S3 weighs 116.4 Mb.
+Spanish: 209 seconds. Local file weighs 122.1 Mb, file in S3 weighs 116.4 Mb. 509435 tweets found.
 <br/>
-Hungarian: 121 seconds. Local file weighs 221 Kb, file in S3 weighs 216.1 Kb.
+Hungarian: 121 seconds. Local file weighs 221 Kb, file in S3 weighs 216.1 Kb. 1057 tweets found.
 <br/>
-Portuguese: 128 seconds. Local file weighs 8.6 Mb, file in S3 weighs 8.2 Mb.
+Portuguese: 128 seconds. Local file weighs 8.6 Mb, file in S3 weighs 8.2 Mb. 37623 tweets found.
 <br/><br/>
