@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/LSDS2021-public.iml" filepath="$PROJECT_DIR$/.idea/LSDS2021-public.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab1/lab1.iml" filepath="$PROJECT_DIR$/lab1/lab1.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab2/lab1 (1).iml" filepath="$PROJECT_DIR$/lab2/lab1 (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/lsds2022.lab2/spark-test.iml" filepath="$PROJECT_DIR$/lsds2022.lab2/spark-test.iml" />
     </modules>
   </component>
 </project>
