@@ -1,4 +1,4 @@
-package upf.edu.parser;
+package upf.edu.model;
 
 import com.google.gson.*;
 
