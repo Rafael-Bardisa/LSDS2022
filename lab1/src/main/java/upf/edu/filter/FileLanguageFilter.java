@@ -1,6 +1,6 @@
 package upf.edu.filter;
 
-import upf.edu.parser.SimplifiedTweet;
+import upf.edu.model.SimplifiedTweet;
 
 import java.io.*;
 import java.util.Optional;
@@ -22,7 +22,7 @@ public class FileLanguageFilter implements LanguageFilter{
   }
 
   public int filterLanguage(String language) throws IOException {
-    int twitter_counter = 0; // counting the tweets
+    int twitter_counter = 0;
     // check if each line in the input file is of the language
     // indicated and append those in that langauge to output file
     try (BufferedReader br = new BufferedReader(new FileReader(this.inputFile)); BufferedWriter bw = new BufferedWriter(new FileWriter(this.outputFile, true))) {
@@ -31,7 +31,7 @@ public class FileLanguageFilter implements LanguageFilter{
         Optional<SimplifiedTweet> st = SimplifiedTweet.fromJson(line); //
         if (st.isPresent() && st.get().getLanguage().equals(language)) { // maybe we need a method to get the language
           bw.write(st.get().toString());
-          twitter_counter ++; // counts number of tweets
+          twitter_counter ++;
         }
         // br.readLine();
       }
