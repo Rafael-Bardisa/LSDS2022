@@ -60,21 +60,12 @@ public class ExtendedSimplifiedTweet implements Serializable {
      */
     public static Optional<ExtendedSimplifiedTweet> fromJson(String jsonStr) {
 
-        List<String> fields = Arrays.asList("id", "text");
-
-        long tweetId;//
-        String text;//
-        long userId;//
-        String userName;//
-        String language;//
-        long timestampMs;//
         boolean isRetweeted;//
         Long retweetedUserId = null;
         Long retweetedTweetId = null;
-        Long followersCount;//
 
         ExtendedSimplifiedTweet tweet  = null;
-        JsonElement je = null;
+        JsonElement je;
 
         try{
             je = JsonParser.parseString(jsonStr);
