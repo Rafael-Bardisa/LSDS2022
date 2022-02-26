@@ -1,6 +1,6 @@
 package upf.edu.filter;
 
-import upf.edu.parser.SimplifiedTweet;
+import upf.edu.model.SimplifiedTweet;
 
 import java.io.*;
 import java.util.Optional;

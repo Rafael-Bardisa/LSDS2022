@@ -1,4 +1,4 @@
-package upf.edu.parser;
+package upf.edu.model;
 
 import com.google.gson.*;
 
@@ -46,6 +46,7 @@ public class SimplifiedTweet{
 
     try{
     je = JsonParser.parseString(jsonStr);
+
     }
     catch (JsonSyntaxException badJson){
       return Optional.empty();
