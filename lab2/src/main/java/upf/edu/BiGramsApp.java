@@ -17,17 +17,15 @@ public class BiGramsApp {
         JavaSparkContext sparkContext = new JavaSparkContext(conf);
         // Load input
         JavaRDD<String> sentences = sparkContext.textFile(input);
-
+/*
         JavaPairRDD<String, Integer> counts = sentences
                 .flatMap(s -> Arrays.asList(s.split("[ ]")).iterator())
                 .map(BiGramsApp::normalise)
                 .mapToPair(word -> new Tuple2<>(word, 1))
                 .reduceByKey(Integer::sum);
         System.out.println("Total words: " + counts.count());
-        counts.saveAsTextFile(outputDir);
+        counts.saveAsTextFile(outputDir);*/
     }
 
-    private static String normalise(String word) {
-        return word.trim().toLowerCase();
-    }
+
 }

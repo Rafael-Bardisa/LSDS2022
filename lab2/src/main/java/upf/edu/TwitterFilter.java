@@ -28,7 +28,7 @@ public class TwitterFilter {
     public static void main( String[] args ) throws IOException {
         int[] list = {9,2};
         System.out.println(validNumbers(list));
-    /*
+
         List<String> argsList = Arrays.asList(args);
         String language = argsList.get(0);
         String outputFile = argsList.get(1);
@@ -55,7 +55,7 @@ public class TwitterFilter {
 
         System.out.println("Found " + blue(String.valueOf(nTweets)) + " tweets written in " + blue(language));
         System.out.println("Time needed to filter " + blue(language) + " files: " + blue(Long.toString(Duration.between(beforeExecution, Instant.now()).getSeconds())) + " seconds.");
-*/
+
     }
 
 
