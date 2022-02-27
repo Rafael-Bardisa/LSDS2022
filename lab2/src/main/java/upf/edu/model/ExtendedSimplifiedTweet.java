@@ -1,4 +1,4 @@
-package upf.edu;
+package upf.edu.model;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
