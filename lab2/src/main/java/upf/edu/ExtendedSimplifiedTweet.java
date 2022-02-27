@@ -97,5 +97,9 @@ public class ExtendedSimplifiedTweet implements Serializable {
         }
         return Optional.ofNullable(tweet);
     }
+
+    public String getText() {
+        return text;
+    }
 }
 
