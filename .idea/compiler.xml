@@ -6,14 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="lab3" />
         <module name="lab1" />
         <module name="spark-test" />
-        <module name="lab1 (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="lab1" target="1.8" />
       <module name="lab1 (1)" target="1.8" />
+      <module name="lab2" target="1.8" />
+      <module name="lab3" target="1.8" />
       <module name="spark-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
