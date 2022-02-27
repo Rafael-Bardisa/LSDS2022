@@ -1,5 +1,5 @@
 package upf.edu;
-
+import upf.edu.model.ExtendedSimplifiedTweet;
 import java.util.*;
 import java.util.stream.Collectors;
 
