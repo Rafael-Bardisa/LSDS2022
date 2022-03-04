@@ -15,7 +15,7 @@ import java.io.IOException;
 public class TwitterWindowExample {
 
     public static void main(String[] args) throws InterruptedException, IOException {
-        String propertiesFile = args[0];
+        String propertiesFile = FilePopup.propertyPath(args, 1);
         OAuthAuthorization auth = ConfigUtils.getAuthorizationFromFileProperties(propertiesFile);
 
         SparkConf conf = new SparkConf().setAppName("Real-time Twitter Example");

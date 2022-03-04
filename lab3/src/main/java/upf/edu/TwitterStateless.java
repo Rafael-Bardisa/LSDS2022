@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class TwitterStateless {
     public static void main(String[] args) throws IOException, InterruptedException {
-        String propertiesFile = args[0];
+        String propertiesFile = FilePopup.propertyPath(args, 2);
         String input = args[1];
         OAuthAuthorization auth = ConfigUtils.getAuthorizationFromFileProperties(propertiesFile);
 
