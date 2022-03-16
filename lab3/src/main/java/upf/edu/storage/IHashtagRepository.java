@@ -9,15 +9,15 @@ public interface IHashtagRepository {
 
   /**
    * Read top 10 hashtags
-   * @param lang
-   * @return
+   * @param lang the language to read
+   * @return the top 10 hashtags
    */
   List<HashTagCount> readTop10(String lang);
 
   /**
    * Write on storage an element of type T
    * in the expected format
-   * @param h
+   * @param h what the fuck
    */
   void write(Status h);
 }

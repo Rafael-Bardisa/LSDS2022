@@ -3,7 +3,7 @@ package upf.edu.model;
 import com.google.gson.Gson;
 
 public final class HashTagCount {
-  protected static Gson gson = new Gson();
+  private static final Gson gson = new Gson();
 
   final String hashTag;
   final String lang;

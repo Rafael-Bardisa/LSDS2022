@@ -19,7 +19,7 @@ import java.io.IOException;
 public class TwitterStateless {
     public static void main(String[] args) throws IOException, InterruptedException {
         String propertiesFile = FilePopup.propertyPath(args, 2);
-        String input = args[1];
+        String input = args.length == 2 ? args[1] : args[0];
         OAuthAuthorization auth = ConfigUtils.getAuthorizationFromFileProperties(propertiesFile);
 
         SparkConf conf = new SparkConf().setAppName("Real-time Twitter Stateless Exercise");
@@ -37,7 +37,12 @@ public class TwitterStateless {
                 .buildLanguageMap(languageMapLines);
 
         // prepare the output
-        final JavaPairDStream<String, Integer> languageRankStream = null; // IMPLEMENT ME
+        final JavaPairDStream<String, Integer> languageRankStream =null /* stream.transform
+                        (x -> x.mapToPair(tweet -> new Tuple2<>(tweet.getLang(),1))
+                                .reduceByKey((a,b)->a+b)
+                                .join(languageMap))
+                        .wrapRDD()
+                */;
 
         // print first 10 results
         languageRankStream.print();

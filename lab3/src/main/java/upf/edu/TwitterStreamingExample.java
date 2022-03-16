@@ -23,7 +23,6 @@ public class TwitterStreamingExample {
         jsc.checkpoint("/tmp/checkpoint");
 
         final JavaReceiverInputDStream<Status> stream = TwitterUtils.createStream(jsc, auth);
-
         // Print the stream (only 5 tweets)
         stream.print(5);
 

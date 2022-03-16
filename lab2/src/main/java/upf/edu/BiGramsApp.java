@@ -3,7 +3,7 @@ import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.SparkConf;
-import upf.edu.ExtendedSimplifiedTweet;
+import upf.edu.model.ExtendedSimplifiedTweet;
 import upf.edu.BiGram;
 import scala.Tuple2;
 

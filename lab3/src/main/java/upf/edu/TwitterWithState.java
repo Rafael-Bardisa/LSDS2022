@@ -15,7 +15,7 @@ import java.io.IOException;
 public class TwitterWithState {
     public static void main(String[] args) throws IOException, InterruptedException {
         String propertiesFile = FilePopup.propertyPath(args, 2);
-        String language = args[1];
+        String input = args.length == 2 ? args[1] : args[0];
         OAuthAuthorization auth = ConfigUtils.getAuthorizationFromFileProperties(propertiesFile);
 
         SparkConf conf = new SparkConf().setAppName("Real-time Twitter With State");
