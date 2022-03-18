@@ -37,12 +37,15 @@ public class TwitterStateless {
                 .buildLanguageMap(languageMapLines);
 
         // prepare the output
-        final JavaPairDStream<String, Integer> languageRankStream =null /* stream.transform
-                        (x -> x.mapToPair(tweet -> new Tuple2<>(tweet.getLang(),1))
-                                .reduceByKey((a,b)->a+b)
-                                .join(languageMap))
-                        .wrapRDD()
-                */;
+        final JavaPairDStream<String, Integer> languageRankStream = stream
+                .mapToPair(x -> new Tuple2<>(x.getLang(), 1));
+
+        languageRankStream.transformToPair(rdd -> rdd
+                .join(languageMap)
+                .mapToPair(x -> new Tuple2<>(x._2._1, x._2._2))
+                .sortByKey(false)
+                .mapToPair(x -> new Tuple2<>(x._2, x._1))
+                );
 
         // print first 10 results
         languageRankStream.print();
